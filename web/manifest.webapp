@@ -1,0 +1,15 @@
+{
+  "name": "MegaQuizz",
+  "description": "The biggest quizz on FirefoxOS",
+  "launch_path": "/megaquizz.html",
+   "icons": {
+    "48": "/images/logo/48/logo-48.png",
+    "60": "/images/logo/60/logo-60.png",
+    "128": "/images/logo/128/logo-128.png"
+  },
+  "developer": {
+    "name": "Benoit Philippe",
+    "url": "https://github.com/OresteVisari/"
+  },
+  "default_locale": "fr"
+}
