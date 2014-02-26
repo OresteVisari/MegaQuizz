@@ -1,32 +1,32 @@
 import 'dart:html';
 
+DivElement content = querySelector('#sample_text_id');
+
 void main() {
   displayMainMenu();
 }
 
 void displayMainMenu() {
-  var content = querySelector('#sample_text_id');
+  content.children.clear();
   
-  while (content.hasChildNodes()) {
-    content.children.removeLast();
-  }
   ImageButtonInputElement button = new ImageButtonInputElement();
   button..id = 'quizz-logiciel-libre'
         ..src = "images/quizz/logiciel-libre.png"
         ..style.width = "120px"
         ..onClick.listen((e) => displayQuestions());
+  
   content.children.add(button);
 }
 
 void displayQuestions() {
-  querySelector('#quizz-logiciel-libre').style.display = 'none';
+  content.children.clear();
 
   ParagraphElement question = new ParagraphElement();
   question..text = 'Qui est à l\'origine du projet GNU ?'
           ..style.marginTop = '-40px'
           ..style.fontSize = '14px';
   
-  querySelector('#sample_text_id').children.add(question);
+  content.children.add(question);
      
   addAnswer('Tim Berners-Lee', false);
   addAnswer('Richard Matthew Stallman', true);
@@ -39,13 +39,13 @@ void addAnswer(String text, bool value) {
   ButtonElement buttonAnswer = new ButtonElement();
   
   buttonAnswer..name = 'anser'
-            ..text = text
-            ..style.width = '200px'
-            ..style.height = '50px'
-            ..onClick.listen((e) => showResult(value));
-  divAnswer.children.add(buttonAnswer);
+              ..text = text
+              ..style.width = '200px'
+              ..style.height = '50px'
+              ..onClick.listen((e) => showResult(value));
   
-  querySelector('#sample_text_id').children.add(divAnswer);
+  divAnswer.children.add(buttonAnswer);
+  content.children.add(divAnswer);
 }
 
 void showResult(bool value) {

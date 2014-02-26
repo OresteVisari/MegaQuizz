@@ -4956,11 +4956,6 @@ var $$ = {};
           throw H.wrapException(P.ConcurrentModificationError$(receiver));
       }
     },
-    get$last: function(receiver) {
-      if (this.get$length(receiver) === 0)
-        throw H.wrapException(P.StateError$("No elements"));
-      return this.$index(receiver, this.get$length(receiver) - 1);
-    },
     where$1: function(receiver, test) {
       return H.setRuntimeTypeInfo(new H.WhereIterable(receiver, test), [H.getRuntimeTypeArgument(receiver, "ListMixin", 0)]);
     },
@@ -5659,11 +5654,6 @@ var $$ = {};
   },
   Node: {
     "": "EventTarget;",
-    remove$0: function(receiver) {
-      var t1 = receiver.parentNode;
-      if (t1 != null)
-        t1.removeChild(receiver);
-    },
     replaceWith$1: function(receiver, otherNode) {
       var $parent, exception;
       try {
@@ -5770,9 +5760,6 @@ var $$ = {};
   },
   CssStyleDeclarationBase: {
     "": "Object;",
-    set$display: function(receiver, value) {
-      this.setProperty$3(receiver, "display", value, "");
-    },
     set$fontSize: function(receiver, value) {
       this.setProperty$3(receiver, "font-size", value, "");
     },
@@ -5811,16 +5798,8 @@ var $$ = {};
       var t1 = this.toList$0(this);
       return new H.ListIterator(t1, t1.length, 0, null);
     },
-    removeLast$0: function(_) {
-      var t1, result, t2;
-      t1 = this._element;
-      result = t1.lastElementChild;
-      t2 = result == null;
-      if (t2)
-        H.throwExpression(P.StateError$("No elements"));
-      if (!t2)
-        t1.removeChild(result);
-      return result;
+    clear$0: function(_) {
+      this._element.textContent = "";
     },
     $asList: function() {
       return [W.Element];
@@ -6068,11 +6047,8 @@ var $$ = {};
     add$1: function(_, value) {
       this._childNodes._this.appendChild(value);
     },
-    removeLast$0: function(_) {
-      var result = this.get$last(this);
-      if (result != null)
-        J.remove$0$ax(result);
-      return result;
+    clear$0: function(_) {
+      this._childNodes._this.textContent = "";
     },
     get$length: function(_) {
       return this.get$_filtered().length;
@@ -6104,19 +6080,16 @@ var $$ = {};
     T.displayMainMenu();
   }, "call$0", "main$closure", 0, 0, 0],
   displayMainMenu: function() {
-    var $content, t1, t2, button;
-    $content = document.querySelector("#sample_text_id");
-    for (t1 = J.getInterceptor$x($content); $content.hasChildNodes() === true;) {
-      t2 = t1.get$children($content);
-      t2.removeLast$0(t2);
-    }
+    var t1, button;
+    t1 = J.get$children$x($.get$content());
+    t1.clear$0(t1);
     button = W.InputElement_InputElement("image");
     button.id = "quizz-logiciel-libre";
     J.set$src$x(button, "images/quizz/logiciel-libre.png");
     J.set$width$x(button.style, "120px");
-    t2 = H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(button, C.EventStreamProvider_click._eventType, false), [null]);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t2._target, t2._eventType, W._wrapZone(new T.displayMainMenu_closure()), t2._useCapture), [H.getTypeArgumentByIndex(t2, 0)])._tryResume$0();
-    t1 = t1.get$children($content);
+    t1 = H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(button, C.EventStreamProvider_click._eventType, false), [null]);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.displayMainMenu_closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$children$x($.get$content());
     t1.add$1(t1, button);
   },
   addAnswer: function(text, value) {
@@ -6131,19 +6104,20 @@ var $$ = {};
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.addAnswer_closure(value)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$children$x(divAnswer);
     t1.add$1(t1, buttonAnswer);
-    t1 = J.get$children$x(document.querySelector("#sample_text_id"));
+    t1 = J.get$children$x($.get$content());
     t1.add$1(t1, divAnswer);
   },
   displayMainMenu_closure: {
     "": "Closure:10;",
     call$1: function(e) {
-      var question, t1;
-      J.set$display$x(document.querySelector("#quizz-logiciel-libre").style, "none");
+      var t1, question;
+      t1 = J.get$children$x($.get$content());
+      t1.clear$0(t1);
       question = document.createElement("p", null);
       question.textContent = "Qui est \u00e0 l'origine du projet GNU ?";
       J.set$marginTop$x(question.style, "-40px");
       J.set$fontSize$x(question.style, "14px");
-      t1 = J.get$children$x(document.querySelector("#sample_text_id"));
+      t1 = J.get$children$x($.get$content());
       t1.add$1(t1, question);
       T.addAnswer("Tim Berners-Lee", false);
       T.addAnswer("Richard Matthew Stallman", true);
@@ -6337,17 +6311,11 @@ J.get$iterator$ax = function(receiver) {
 J.get$length$asx = function(receiver) {
   return J.getInterceptor$asx(receiver).get$length(receiver);
 };
-J.remove$0$ax = function(receiver) {
-  return J.getInterceptor$ax(receiver).remove$0(receiver);
-};
 J.removeEventListener$3$x = function(receiver, a0, a1, a2) {
   return J.getInterceptor$x(receiver).removeEventListener$3(receiver, a0, a1, a2);
 };
 J.replaceWith$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).replaceWith$1(receiver, a0);
-};
-J.set$display$x = function(receiver, value) {
-  return J.getInterceptor$x(receiver).set$display(receiver, value);
 };
 J.set$fontSize$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$fontSize(receiver, value);
@@ -6624,6 +6592,9 @@ Isolate.$lazy($, "_toStringVisiting", "_toStringVisiting", "get$_toStringVisitin
 });
 Isolate.$lazy($, "_toStringList", "Maps__toStringList", "get$Maps__toStringList", function() {
   return [];
+});
+Isolate.$lazy($, "content", "content", "get$content", function() {
+  return document.querySelector("#sample_text_id");
 });
 // Native classes
 
