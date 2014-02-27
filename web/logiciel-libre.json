@@ -1,0 +1,29 @@
+{
+    "name" : "logiciel-libre",
+    "description" : "Les logiciels libres",
+    "questions" : 
+    [
+        { 
+          "question"  : "Qui est à l'origine du projet GNU ?",
+          "solution"  : "2",
+          "answers"   : [ "Tim Berners-Lee", 
+                          "Richard Matthew Stallman", 
+                          "Linus Torvalds", 
+                          "Dennis Ritchie"]
+        }, { 
+          "question"  : "Qui a inventé Linux ?",
+          "solution"  : "1",
+          "answers"   : [ "Linus Torvalds", 
+                          "Richard Matthew Stallman", 
+                          "Tim Berners-Lee", 
+                          "Ada Lovelace"]
+        }, { 
+          "question"  : "Quand débute l'ère Unix ?",
+          "solution"  : "4",
+          "answers"   : [ "1960", 
+                          "1965", 
+                          "1968", 
+                          "1970"]
+        }
+    ]
+}
