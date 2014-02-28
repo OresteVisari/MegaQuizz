@@ -11,6 +11,9 @@ void main() {
   displayMainMenu();
 }
 
+/**
+ * Display the main menu
+ */
 void displayMainMenu() {
   content.children.clear();
   score = curentQuestion = 0;
@@ -25,18 +28,27 @@ void displayMainMenu() {
   content.children.add(button);
 }
 
+/**
+ * Load the quizz, a json file...
+ */
 void loadQuizz() {
   content.children.clear();  
   String path = "logiciel-libre.json";
   HttpRequest.getString(path).then(displayQuizz);
 }
 
+/**
+ * and parse this to a Map
+ */
 void displayQuizz(String file) {
   quizz = JSON.decode(file);
   sub_title.text = quizz["description"];
   displayQuestion();
 }
 
+/**
+ * Display the curent question
+ */
 void displayQuestion() {
   content.children.clear();
   var question = quizz["questions"][curentQuestion];
@@ -56,6 +68,9 @@ void displayQuestion() {
   curentQuestion++;
 }
 
+/**
+ * Add the answer
+ */
 void addAnswer(String text, bool value) {
   DivElement divAnswer = new DivElement();
   ButtonElement buttonAnswer = new ButtonElement();
@@ -67,6 +82,9 @@ void addAnswer(String text, bool value) {
   content.children.add(divAnswer);
 }
 
+/**
+ * Increase score ansd show result if finish
+ */
 void nextQuestion(res){
   if (res) {
     score++;
@@ -79,6 +97,9 @@ void nextQuestion(res){
   }
 }
 
+/**
+ * Show the result
+ */
 void showResult() {
   content.children.clear();
   ParagraphElement par = new ParagraphElement();
