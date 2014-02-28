@@ -3,27 +3,76 @@
     "description" : "Les logiciels libres",
     "questions" : 
     [
-        { 
+        {
           "question"  : "Qui est à l'origine du projet GNU ?",
           "solution"  : "2",
-          "answers"   : [ "Tim Berners-Lee", 
-                          "Richard Matthew Stallman", 
-                          "Linus Torvalds", 
+          "answers"   : [ "Tim Berners-Lee",
+                          "Richard Matthew Stallman",
+                          "Linus Torvalds",
                           "Dennis Ritchie"]
-        }, { 
+        }, {
           "question"  : "Qui a inventé Linux ?",
           "solution"  : "1",
-          "answers"   : [ "Linus Torvalds", 
-                          "Richard Matthew Stallman", 
-                          "Tim Berners-Lee", 
+          "answers"   : [ "Linus Torvalds",
+                          "Richard Matthew Stallman",
+                          "Tim Berners-Lee",
                           "Ada Lovelace"]
-        }, { 
+        }, {
           "question"  : "Quand débute l'ère Unix ?",
           "solution"  : "4",
-          "answers"   : [ "1960", 
-                          "1965", 
-                          "1968", 
+          "answers"   : [ "1960",
+                          "1965",
+                          "1968",
                           "1970"]
+        }, {
+          "question"  : "Lequel de ces navigateurs web est un logiciel libre ?",
+          "solution"  : "2",
+          "answers"   : [ "Chrome",
+                          "Firefox",
+                          "Safari",
+                          "Opéra"]
+        }, {
+          "question"  : "Quelle fondation défend les logiciels libres ?",
+          "solution"  : "2",
+          "answers"   : [ "Open Source Foundation",
+                          "Free Software Foundation",
+                          "Libre Software Foundation",
+                          "Open Source Initiative"]
+        }, {
+          "question"  : "Sur combien de libertés repose le logiciel libre ?",
+          "solution"  : "4",
+          "answers"   : [ "1",
+                          "2",
+                          "3",
+                          "4"]
+        }, {
+          "question"  : "Quel est le nom de l'un des éditeurs d'image libre les plus populaire ?",
+          "solution"  : "2",
+          "answers"   : [ "Paint",
+                          "Gimp",
+                          "Photoshop",
+                          "GColor"]
+        }, {
+          "question"  : "Quel est le nom de la suite bureautique gérée par la Document Foundation ?",
+          "solution"  : "3",
+          "answers"   : [ "OpenOffice",
+                          "Apache OpenOffice",
+                          "LibreOffice",
+                          "Calligra"]
+        }, {
+          "question"  : "Comment se nome la mascotte de Linux ?",
+          "solution"  : "2",
+          "answers"   : [ "Lux",
+                          "Tux",
+                          "Lina",
+                          "Lix"]
+        }, {
+          "question"  : "Quel animal représente Firefox ?",
+          "solution"  : "1",
+          "answers"   : [ "Un panda roux",
+                          "Un renard",
+                          "Un loup",
+                          "Un manchot"]
         }
     ]
 }
