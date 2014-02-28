@@ -51,7 +51,7 @@ void displayQuizz(String file) {
  */
 void displayQuestion() {
   content.children.clear();
-  var question = quizz["questions"][curentQuestion];
+  Map question = quizz["questions"][curentQuestion];
   ParagraphElement parQuestion = new ParagraphElement();
   parQuestion.text = question["question"];
   content.children.add(parQuestion);
@@ -104,6 +104,6 @@ void showResult() {
   content.children.clear();
   ParagraphElement par = new ParagraphElement();
   int numberOfQuestions = quizz["questions"].length;
-  par.text = "Votre score est de : $score / $numberOfQuestions ";
+  par.text = "Votre score est de $score / $numberOfQuestions ";
   content.children.add(par);
 }

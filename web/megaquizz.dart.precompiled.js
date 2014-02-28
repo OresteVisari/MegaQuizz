@@ -6374,7 +6374,7 @@ var $$ = {};
         t1.clear$0(t1);
         par = document.createElement("p", null);
         numberOfQuestions = J.get$length$asx(J.$index$asx($.quizz, "questions"));
-        par.textContent = "Votre score est de : " + H.S($.score) + " / " + H.S(numberOfQuestions) + " ";
+        par.textContent = "Votre score est de " + H.S($.score) + " / " + H.S(numberOfQuestions) + " ";
         t1 = J.get$children$x($.get$content());
         t1.add$1(t1, par);
       }
