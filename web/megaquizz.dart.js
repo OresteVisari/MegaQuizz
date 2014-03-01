@@ -423,6 +423,19 @@ var $$ = {};
     toString$0: function(receiver) {
       return H.IterableMixinWorkaround_toStringIterable(receiver, "[", "]");
     },
+    toList$1$growable: function(receiver, growable) {
+      var t1;
+      if (growable)
+        return H.setRuntimeTypeInfo(receiver.slice(), [H.getTypeArgumentByIndex(receiver, 0)]);
+      else {
+        t1 = H.setRuntimeTypeInfo(receiver.slice(), [H.getTypeArgumentByIndex(receiver, 0)]);
+        t1.fixed$length = init;
+        return t1;
+      }
+    },
+    toList$0: function($receiver) {
+      return this.toList$1$growable($receiver, true);
+    },
     get$iterator: function(receiver) {
       return new H.ListIterator(receiver, receiver.length, 0, null);
     },
@@ -828,7 +841,7 @@ var $$ = {};
     },
     register$2: function(_, portId, port) {
       var t1 = this.ports;
-      if (t1.containsKey$1(portId))
+      if (t1.containsKey$1(t1, portId))
         throw H.wrapException(P.Exception_Exception("Registry: ports must be registered only once."));
       t1.$indexSet(t1, portId, port);
       this._updateGlobalState$0();
@@ -857,7 +870,12 @@ var $$ = {};
       var $event, t1, t2;
       $event = this.dequeue$0();
       if ($event == null) {
-        if (init.globalState.rootContext != null && init.globalState.isolates.containsKey$1(init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._collection$_length === 0)
+        if (init.globalState.rootContext != null) {
+          t1 = init.globalState.isolates;
+          t1 = t1.containsKey$1(t1, init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._collection$_length === 0;
+        } else
+          t1 = false;
+        if (t1)
           H.throwExpression(P.Exception_Exception("Program exited with open ReceivePorts."));
         t1 = init.globalState;
         if (t1.isWorker === true && t1.isolates._collection$_length === 0 && t1.topEventLoop.activeTimerCount === 0) {
@@ -1226,7 +1244,7 @@ var $$ = {};
       t1.copy_0 = copy;
       t2 = this._visited;
       t2.$indexSet(t2, map, copy);
-      map.forEach$1(map, new H._Copier_visitMap_closure(t1, this));
+      J.forEach$1$ax(map, new H._Copier_visitMap_closure(t1, this));
       return t1.copy_0;
     },
     visitSendPort$1: function(x) {
@@ -1258,7 +1276,7 @@ var $$ = {};
       return ["list", id, this._serializeList$1(list)];
     },
     visitMap$1: function(map) {
-      var t1, copyId, id, keys;
+      var t1, copyId, id;
       t1 = this._visited;
       copyId = t1.$index(t1, map);
       if (copyId != null)
@@ -1267,10 +1285,8 @@ var $$ = {};
       this._nextFreeRefId = id + 1;
       t1 = this._visited;
       t1.$indexSet(t1, map, id);
-      t1 = map.get$keys();
-      keys = this._serializeList$1(P.List_List$from(t1, true, H.getRuntimeTypeArgument(t1, "IterableBase", 0)));
-      t1 = map.get$values(map);
-      return ["map", id, keys, this._serializeList$1(P.List_List$from(t1, true, H.getRuntimeTypeArgument(t1, "IterableBase", 0)))];
+      t1 = J.getInterceptor$x(map);
+      return ["map", id, this._serializeList$1(J.toList$0$ax(t1.get$keys(map))), this._serializeList$1(J.toList$0$ax(t1.get$values(map)))];
     },
     _serializeList$1: function(list) {
       var t1, len, result, i, t2;
@@ -4179,7 +4195,7 @@ var $$ = {};
     get$length: function(_) {
       return this._collection$_length;
     },
-    get$keys: function() {
+    get$keys: function(_) {
       return H.setRuntimeTypeInfo(new P.HashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]);
     },
     get$values: function(_) {
@@ -4327,6 +4343,7 @@ var $$ = {};
       return -1;
     },
     $isMap: true,
+    $asMap: null,
     static: {_HashMap__setTableEntry: function(table, key, value) {
         if (value == null)
           table[key] = table;
@@ -4394,13 +4411,13 @@ var $$ = {};
     get$length: function(_) {
       return this._collection$_length;
     },
-    get$keys: function() {
+    get$keys: function(_) {
       return H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]);
     },
     get$values: function(_) {
       return H.MappedIterable_MappedIterable(H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]), new P._LinkedHashMap_values_closure(this), H.getTypeArgumentByIndex(this, 0), H.getTypeArgumentByIndex(this, 1));
     },
-    containsKey$1: function(key) {
+    containsKey$1: function(_, key) {
       var nums, rest;
       if ((key & 0x3ffffff) === key) {
         nums = this._nums;
@@ -4498,7 +4515,7 @@ var $$ = {};
       cell = this._first;
       modifications = this._modifications;
       for (; cell != null;) {
-        action.call$2(cell.get$_key(), cell._collection$_value);
+        action.call$2(cell.get$_key(cell), cell._collection$_value);
         if (modifications !== this._modifications)
           throw H.wrapException(P.ConcurrentModificationError$(this));
         cell = cell._next;
@@ -4562,7 +4579,7 @@ var $$ = {};
         return -1;
       $length = bucket.length;
       for (i = 0; i < $length; ++i)
-        if (J.$eq(bucket[i].get$_key(), key))
+        if (J.$eq(J.get$_key$x(bucket[i]), key))
           return i;
       return -1;
     },
@@ -4570,6 +4587,7 @@ var $$ = {};
       return P.Maps_mapToString(this);
     },
     $isMap: true,
+    $asMap: null,
     static: {_LinkedHashMap__newHashTable: function() {
         var table = Object.create(null);
         table["<non-identifier-key>"] = table;
@@ -4585,7 +4603,7 @@ var $$ = {};
     }
   },
   LinkedHashMapCell: {
-    "": "Object;_key<,_collection$_value@,_next@,_previous@"
+    "": "Object;_key>,_collection$_value@,_next@,_previous@"
   },
   LinkedHashMapKeyIterable: {
     "": "IterableBase;_map",
@@ -4605,7 +4623,7 @@ var $$ = {};
       cell = t1._first;
       modifications = t1._modifications;
       for (; cell != null;) {
-        f.call$1(cell.get$_key());
+        f.call$1(cell.get$_key(cell));
         if (modifications !== t1._modifications)
           throw H.wrapException(P.ConcurrentModificationError$(t1));
         cell = cell._next;
@@ -4628,7 +4646,7 @@ var $$ = {};
           this._collection$_current = null;
           return false;
         } else {
-          this._collection$_current = t1.get$_key();
+          this._collection$_current = t1.get$_key(t1);
           this._cell = t1._next;
           return true;
         }
@@ -4974,6 +4992,12 @@ var $$ = {};
       var t1;
       for (t1 = this.get$iterator(this); t1.moveNext$0();)
         f.call$1(t1.get$current());
+    },
+    toList$1$growable: function(_, growable) {
+      return P.List_List$from(this, growable, H.getRuntimeTypeArgument(this, "IterableBase", 0));
+    },
+    toList$0: function($receiver) {
+      return this.toList$1$growable($receiver, true);
     },
     get$length: function(_) {
       var it, count;
@@ -5895,6 +5919,42 @@ var $$ = {};
     "": "Event;error=",
     "%": "SpeechRecognitionError"
   },
+  Storage: {
+    "": "Interceptor;",
+    $index: function(receiver, key) {
+      return receiver.getItem(key);
+    },
+    $indexSet: function(receiver, key, value) {
+      receiver.setItem(key, value);
+    },
+    forEach$1: function(receiver, f) {
+      var i, key;
+      for (i = 0; true; ++i) {
+        key = receiver.key(i);
+        if (key == null)
+          return;
+        f.call$2(key, receiver.getItem(key));
+      }
+    },
+    get$keys: function(receiver) {
+      var keys = [];
+      this.forEach$1(receiver, new W.Storage_keys_closure(keys));
+      return keys;
+    },
+    get$values: function(receiver) {
+      var values = [];
+      this.forEach$1(receiver, new W.Storage_values_closure(values));
+      return values;
+    },
+    get$length: function(receiver) {
+      return receiver.length;
+    },
+    $isMap: true,
+    $asMap: function() {
+      return [J.JSString, J.JSString];
+    },
+    "%": "Storage"
+  },
   StyleElement: {
     "": "HtmlElement;type}",
     "%": "HTMLStyleElement"
@@ -6038,6 +6098,18 @@ var $$ = {};
     $isList: true,
     $asList: function() {
       return [W.Node];
+    }
+  },
+  Storage_keys_closure: {
+    "": "Closure:11;keys_0",
+    call$2: function(k, v) {
+      return this.keys_0.push(k);
+    }
+  },
+  Storage_values_closure: {
+    "": "Closure:11;values_0",
+    call$2: function(k, v) {
+      return this.values_0.push(v);
     }
   },
   EventStreamProvider: {
@@ -6354,7 +6426,7 @@ var $$ = {};
   addAnswer_closure: {
     "": "Closure:12;value_0",
     call$1: function(e) {
-      var t1, t2, par, numberOfQuestions;
+      var t1, t2, numberOfQuestions, nameOfQuizz, $localStorage, bestScore, parScore, parBestScore;
       if (this.value_0) {
         t1 = $.score;
         if (typeof t1 !== "number")
@@ -6372,11 +6444,27 @@ var $$ = {};
       else {
         t1 = J.get$children$x($.get$content());
         t1.clear$0(t1);
-        par = document.createElement("p", null);
         numberOfQuestions = J.get$length$asx(J.$index$asx($.quizz, "questions"));
-        par.textContent = "Votre score est de " + H.S($.score) + " / " + H.S(numberOfQuestions) + " ";
+        nameOfQuizz = J.$index$asx($.quizz, "name");
+        $localStorage = window.localStorage;
+        bestScore = $localStorage.getItem(nameOfQuizz) != null ? H.Primitives_parseInt($localStorage.getItem(nameOfQuizz), null, null) : 0;
+        t1 = $.score;
+        if (typeof t1 !== "number")
+          return t1.$gt();
+        if (typeof bestScore !== "number")
+          return H.iae(bestScore);
+        if (t1 > bestScore) {
+          $localStorage.setItem(nameOfQuizz, C.JSInt_methods.toString$0(t1));
+          bestScore = $.score;
+        }
+        parScore = document.createElement("p", null);
+        parBestScore = document.createElement("p", null);
+        parScore.textContent = "Votre score est de " + H.S($.score) + " / " + H.S(numberOfQuestions);
+        parBestScore.textContent = "Votre record est de " + H.S(bestScore) + " /  " + H.S(numberOfQuestions);
         t1 = J.get$children$x($.get$content());
-        t1.add$1(t1, par);
+        t1.add$1(t1, parScore);
+        t1 = J.get$children$x($.get$content());
+        t1.add$1(t1, parBestScore);
       }
       return;
     }
@@ -6549,6 +6637,9 @@ J.addEventListener$3$x = function(receiver, a0, a1, a2) {
 J.forEach$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).forEach$1(receiver, a0);
 };
+J.get$_key$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$_key(receiver);
+};
 J.get$children$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$children(receiver);
 };
@@ -6584,6 +6675,9 @@ J.set$type$x = function(receiver, value) {
 };
 J.set$width$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$width(receiver, value);
+};
+J.toList$0$ax = function(receiver) {
+  return J.getInterceptor$ax(receiver).toList$0(receiver);
 };
 J.toString$0 = function(receiver) {
   return J.getInterceptor(receiver).toString$0(receiver);

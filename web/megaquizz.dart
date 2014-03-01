@@ -102,8 +102,24 @@ void nextQuestion(res){
  */
 void showResult() {
   content.children.clear();
-  ParagraphElement par = new ParagraphElement();
+  int bestScore = 0;
   int numberOfQuestions = quizz["questions"].length;
-  par.text = "Votre score est de $score / $numberOfQuestions ";
-  content.children.add(par);
+  String nameOfQuizz = quizz["name"];
+  Storage localStorage = window.localStorage;
+
+  if (localStorage[nameOfQuizz] != null) {
+    bestScore = int.parse(localStorage[nameOfQuizz]);
+  }
+
+  if (score > bestScore) {
+    localStorage[nameOfQuizz] = score.toString();
+    bestScore = score;
+  }
+
+  ParagraphElement parScore = new ParagraphElement();
+  ParagraphElement parBestScore = new ParagraphElement();
+  parScore.text = "Votre score est de $score / $numberOfQuestions";
+  parBestScore.text = "Votre record est de $bestScore /  $numberOfQuestions";
+  content.children.add(parScore);
+  content.children.add(parBestScore);
 }
