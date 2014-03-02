@@ -23,7 +23,6 @@ void displayMainMenu() {
   for (String id in listOfQuizz) {
     addQuizz(id);
   }
-
 }
 
 void addQuizz(String id) {
