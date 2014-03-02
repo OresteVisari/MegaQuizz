@@ -7,4 +7,4 @@ You can easily contributed by submitting a new quizz.
 How To
 =====
 
-Only via app manager for the moment.
+Via the FirefoxOS marketplace : https://marketplace.firefox.com/app/megaquizz/
