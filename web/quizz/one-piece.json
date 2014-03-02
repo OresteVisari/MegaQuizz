@@ -1,0 +1,78 @@
+{
+    "name" : "one-piece",
+    "description" : "One Piece",
+    "questions" : 
+    [
+        {
+          "question"  : "Qui est l'auteur de One Piece ?",
+          "solution"  : "4",
+          "answers"   : [ "Seishi Kishimoto",
+                          "Rumiko Takahashi",
+                          "Asao Takamor",
+                          "Eiichirō Oda"]
+        }, {
+          "question"  : "À quelle catégorie de manga appartient One Piece ?",
+          "solution"  : "1",
+          "answers"   : [ "Shōnen",
+                          "Shōjo",
+                          "Seijin",
+                          "Hentai"]
+        }, {
+          "question"  : "Combien d'épisode existe-t-il dans l’animé ?",
+          "solution"  : "3",
+          "answers"   : [ "Entre 200 et 400",
+                          "Entre 400 et 600",
+                          "Entre 600 et 800",
+                          "Entre 800 et 1000"]
+        }, {
+          "question"  : "Quel est le nom du héros principal ?",
+          "solution"  : "1",
+          "answers"   : [ "Monkey D. Luffy",
+                          "Gol D. Roger",
+                          "Shanks le Roux",
+                          "Portgas D. Ace"]
+        }, {
+          "question"  : "Quel fruit fut mangé par Ace ?",
+          "solution"  : "2",
+          "answers"   : [ "Yomi Yomi no Mi",
+                          "Mera Mera no Mi",
+                          "Gomu Gomu no Mi",
+                          "Awa Awa no Mi"]
+        }, {
+          "question"  : "Lequel de ces personnages est le plus ancien membre de l'équipage ?",
+          "solution"  : "3",
+          "answers"   : [ "Sanji",
+                          "Nico Robin",
+                          "Usopp",
+                          "Tony Tony Chopper"]
+        }, {
+          "question"  : "Qui offre le chapeau de paille à Luffy ?",
+          "solution"  : "4",
+          "answers"   : [ "Barbe Blanche",
+                          "Gol D. Roger",
+                          "Portgas D. Ace",
+                          "Shanks le Roux"]
+        }, {
+          "question"  : "Qui est Laboon ?",
+          "solution"  : "4",
+          "answers"   : [ "Un lapin des mers",
+                          "Une otarie",
+                          "Une tortue géante",
+                          "Une baleine"]
+        }, {
+          "question"  : "Qui est le père de Luffy ?",
+          "solution"  : "1",
+          "answers"   : [ "Monkey D. Dragon",
+                          "Gol D. Roger",
+                          "Monkey D. Garp",
+                          "Portgas D. Ace"]
+        }, {
+          "question"  : "Quel est le rêve de Sanji ?",
+          "solution"  : "2",
+          "answers"   : [ "Devenir le meilleur épéiste",
+                          "Trouver All Blue",
+                          "Faire une carte du monde",
+                          "Trouver le One Piece"]
+        }
+    ]
+}

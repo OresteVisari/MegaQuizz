@@ -2684,7 +2684,7 @@ var $$ = {};
     return symbol.get$_name();
   },
   ListIterator: {
-    "": "Object;_iterable,_length,_index,_current",
+    "": "Object;_iterable,_dev$_length,_index,_current",
     get$current: function() {
       return this._current;
     },
@@ -2693,7 +2693,7 @@ var $$ = {};
       t1 = this._iterable;
       t2 = J.getInterceptor$asx(t1);
       $length = t2.get$length(t1);
-      if (this._length !== $length)
+      if (this._dev$_length !== $length)
         throw H.wrapException(P.ConcurrentModificationError$(t1));
       t3 = this._index;
       if (t3 >= $length) {
@@ -6159,11 +6159,11 @@ var $$ = {};
     $asList: null
   },
   FixedSizeListIterator: {
-    "": "Object;_array,_html$_length,_position,_html$_current",
+    "": "Object;_array,_length,_position,_html$_current",
     moveNext$0: function() {
       var nextPosition, t1;
       nextPosition = this._position + 1;
-      t1 = this._html$_length;
+      t1 = this._length;
       if (nextPosition < t1) {
         this._html$_current = J.$index$asx(this._array, nextPosition);
         this._position = nextPosition;
@@ -6337,18 +6337,28 @@ var $$ = {};
     T.displayMainMenu();
   }, "call$0", "main$closure", 0, 0, 1],
   displayMainMenu: function() {
-    var t1, button;
-    t1 = J.get$children$x($.get$content());
+    var t1 = J.get$children$x($.get$content());
     t1.clear$0(t1);
     $.curentQuestion = 0;
     $.score = 0;
     $.get$sub_title().textContent = "Pour apprendre tout en jouant";
+    for (t1 = new H.ListIterator($.get$listOfQuizz(), 2, 0, null); t1.moveNext$0();)
+      T.addQuizz(t1._current);
+  },
+  addQuizz: function(id) {
+    var button, t1, t2, t3;
     button = W.InputElement_InputElement("image");
-    button.id = "quizz-logiciel-libre";
-    J.set$src$x(button, "images/quizz/logiciel-libre.png");
+    button.id = id;
+    J.set$src$x(button, "images/quizz/" + H.S(id) + ".png");
     J.set$width$x(button.style, "120px");
-    t1 = H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(button, C.EventStreamProvider_click._eventType, false), [null]);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.displayMainMenu_closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = C.EventStreamProvider_click._eventType;
+    t2 = new W._ElementEventStreamImpl(button, t1, false);
+    t2.$builtinTypeInfo = [null];
+    t3 = new W._EventStreamSubscription(0, button, t1, W._wrapZone(new T.addQuizz_closure(id)), false);
+    t3.$builtinTypeInfo = [H.getTypeArgumentByIndex(t2, 0)];
+    t2 = t3._onData;
+    if (t2 != null && t3._pauseCount <= 0)
+      J.addEventListener$3$x(t3._target, t1, t2, false);
     t1 = J.get$children$x($.get$content());
     t1.add$1(t1, button);
   },
@@ -6414,12 +6424,12 @@ var $$ = {};
       return T.displayMainMenu();
     }
   },
-  displayMainMenu_closure: {
-    "": "Closure:12;",
+  addQuizz_closure: {
+    "": "Closure:12;id_0",
     call$1: function(e) {
       var t1 = J.get$children$x($.get$content());
       t1.clear$0(t1);
-      W.HttpRequest_getString("logiciel-libre.json", null, null).then$1(T.displayQuizz$closure());
+      W.HttpRequest_getString("quizz/" + H.S(this.id_0) + ".json", null, null).then$1(T.displayQuizz$closure());
       return;
     }
   },
@@ -6947,6 +6957,9 @@ Isolate.$lazy($, "content", "content", "get$content", function() {
 });
 Isolate.$lazy($, "sub_title", "sub_title", "get$sub_title", function() {
   return document.querySelector("#sub_title");
+});
+Isolate.$lazy($, "listOfQuizz", "listOfQuizz", "get$listOfQuizz", function() {
+  return ["logiciel-libre", "one-piece"];
 });
 // Native classes
 

@@ -5,6 +5,7 @@ DivElement content = querySelector('#sample_container_id');
 Element sub_title = querySelector('#sub_title');
 int curentQuestion, score;
 Map quizz;
+List listOfQuizz = ["logiciel-libre", "one-piece"];
 
 void main() {
   querySelector('#title').onClick.listen((e) => displayMainMenu());
@@ -19,11 +20,18 @@ void displayMainMenu() {
   score = curentQuestion = 0;
   sub_title.text = "Pour apprendre tout en jouant";
   
+  for (String id in listOfQuizz) {
+    addQuizz(id);
+  }
+
+}
+
+void addQuizz(String id) {
   ImageButtonInputElement button = new ImageButtonInputElement();
-  button..id = 'quizz-logiciel-libre'
-        ..src = "images/quizz/logiciel-libre.png"
+  button..id = id
+        ..src = "images/quizz/$id.png"
         ..style.width = "120px"
-        ..onClick.listen((e) => loadQuizz());
+        ..onClick.listen((e) => loadQuizz(id));
   
   content.children.add(button);
 }
@@ -31,9 +39,9 @@ void displayMainMenu() {
 /**
  * Load the quizz, a json file...
  */
-void loadQuizz() {
+void loadQuizz(String id) {
   content.children.clear();  
-  String path = "logiciel-libre.json";
+  String path = "quizz/$id.json";
   HttpRequest.getString(path).then(displayQuizz);
 }
 
