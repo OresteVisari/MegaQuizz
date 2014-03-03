@@ -25,6 +25,9 @@ void displayMainMenu() {
   }
 }
 
+/**
+ * Add a new quizz
+ */
 void addQuizz(String id) {
   ImageButtonInputElement button = new ImageButtonInputElement();
   button..id = id
