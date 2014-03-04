@@ -1,0 +1,78 @@
+{
+    "name" : "cinema",
+    "description" : "Les classiques du cinéma",
+    "questions" : 
+    [
+        {
+          "question"  : "Qui a réalisé Volver ?",
+          "solution"  : "3",
+          "answers"   : [ "Martin Scorsese",
+                          "François Truffaut",
+                          "Pedro Almodóvar",
+                          "Federico Fellini"]
+        }, {
+          "question"  : "Dans quel film a joué Brad Pitt ?",
+          "solution"  : "4",
+          "answers"   : [ "La Vengeance dans la peau ",
+                          "Kill Bill",
+                          "Drive ",
+                          "Fight Club"]
+        }, {
+          "question"  : "Quand est sortie Men in Black ?",
+          "solution"  : "1",
+          "answers"   : [ "1997",
+                          "1999",
+                          "2001",
+                          "2003"]
+        }, {
+          "question"  : "Qui a joué dans Le diable s'habille en Prada ?",
+          "solution"  : "2",
+          "answers"   : [ "Jessica Alba",
+                          "Meryl Streep",
+                          "Ashley Bell",
+                          "Halle Berry"]
+        }, {
+          "question"  : "Quel film n'as pas réalisé Quentin Tarantino ?",
+          "solution"  : "3",
+          "answers"   : [ "Reservoir Dogs",
+                          "Django Unchained",
+                          "Scarface",
+                          "Pulp Fiction"]
+        }, {
+          "question"  : "Lequel de ces films a reçu la Palme d'Or ?",
+          "solution"  : "4",
+          "answers"   : [ "Django Unchained",
+                          "Avatar",
+                          "Sin City ",
+                          "Underground"]
+        }, {
+          "question"  : "Qui est l'acteur principal de American History X ?",
+          "solution"  : "1",
+          "answers"   : [ "Edward Norton",
+                          "Brad Pitt",
+                          "Bruce Willis",
+                          "Robert Downey Jr."]
+        }, {
+          "question"  : "Qui a réalisé Mulholland Drive ?",
+          "solution"  : "2",
+          "answers"   : [ "Luc Besson",
+                          "David Lynch",
+                          "David Fincher",
+                          "Quentin Tarantino"]
+        }, {
+          "question"  : "Qui a réalisé la bande original d'Il était une fois la révolution ?",
+          "solution"  : "3",
+          "answers"   : [ "John Williams",
+                          "Harry Gregson-Williams",
+                          "Ennio Morricone",
+                          "Danny Elfman"]
+        }, {
+          "question"  : "Qui a réalisé Léon ?",
+          "solution"  : "4",
+          "answers"   : [ "Woody Allen",
+                          "Quentin Tarantino",
+                          "Steven Spielberg",
+                          "Luc Besson"]
+        }
+    ]
+}

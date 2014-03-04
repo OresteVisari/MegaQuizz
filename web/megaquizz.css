@@ -27,3 +27,9 @@ button {
   height: 50px;
   margin-top: 2px;
 }
+
+.buttonQuizz {
+  width: 120px;
+  padding-left: 2px;
+  padding-right: 2px;
+}

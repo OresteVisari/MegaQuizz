@@ -1,0 +1,78 @@
+{
+    "name" : "litterature-classique",
+    "description" : "Les classiques de la littérature",
+    "questions" : 
+    [
+        {
+          "question"  : "Qui a écrit Candide ?",
+          "solution"  : "3",
+          "answers"   : [ "Jean-Jacques Rousseau",
+                          "Émile Zola",
+                          "Voltaire",
+                          "Montesquieu"]
+        }, {
+          "question"  : "Qui a écrit Le Rouge et le Noir ?",
+          "solution"  : "2",
+          "answers"   : [ "Oscar Wilde",
+                          "Stendhal",
+                          "Charles Baudelaire",
+                          "Émile Zola"]
+        }, {
+          "question"  : "Qui a écrit Les Fleurs du mal ?",
+          "solution"  : "1",
+          "answers"   : [ "Charles Baudelaire",
+                          "François-René de Chateaubriand",
+                          "Gustave Flaubert",
+                          "Émile Zola"]
+        }, {
+          "question"  : "Qui a écrit Madame Bovary ?",
+          "solution"  : "4",
+          "answers"   : [ "Alphonse de Lamartine",
+                          "Émile Zola",
+                          "Paul Verlaine",
+                          "Gustave Flaubert"]
+        }, {
+          "question"  : "Qui a écrit L'École des femmes ?",
+          "solution"  : "2",
+          "answers"   : [ "Gustave Flaubert",
+                          "Molière",
+                          "Corneille",
+                          "Jean de La Fontaine"]
+        }, {
+          "question"  : "Qui a écrit L'Art de la guerre ?",
+          "solution"  : "4",
+          "answers"   : [ "Carl von Clausewitz",
+                          "Wang Wei",
+                          "Charlemagne",
+                          "Sun Tzu"]
+        }, {
+          "question"  : "Qui a écrit Le Portrait de Dorian Gray ?",
+          "solution"  : "2",
+          "answers"   : [ "Gustave Flaubert",
+                          "Oscar Wilde",
+                          "Émile Zola",
+                          "Agatha Christie"]
+        }, {
+          "question"  : "Qui a écrit Le Prince ?",
+          "solution"  : "1",
+          "answers"   : [ "Nicolas Machiavel",
+                          "Raymond Aron",
+                          "Carl von Clausewitz",
+                          "Désiré Érasme"]
+        }, {
+          "question"  : "Qui a écrit Germinal ?",
+          "solution"  : "2",
+          "answers"   : [ "Jean Racine",
+                          "Émile Zola",
+                          "Gustave Flaubert",
+                          "Stendhal"]
+        }, {
+          "question"  : "Qui a écrit Phèdre ?",
+          "solution"  : "3",
+          "answers"   : [ "Voltaire",
+                          "Stendhal",
+                          "Jean Racine",
+                          "Molière"]
+        }
+    ]
+}

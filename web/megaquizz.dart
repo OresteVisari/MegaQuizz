@@ -5,7 +5,7 @@ DivElement content = querySelector('#sample_container_id');
 Element sub_title = querySelector('#sub_title');
 int curentQuestion, score;
 Map quizz;
-List listOfQuizz = ["logiciel-libre", "one-piece"];
+List listOfQuizz = ["logiciel-libre", "litterature-classique", "cinema", "one-piece"];
 
 void main() {
   querySelector('#title').onClick.listen((e) => displayMainMenu());
@@ -30,9 +30,8 @@ void displayMainMenu() {
  */
 void addQuizz(String id) {
   ImageButtonInputElement button = new ImageButtonInputElement();
-  button..id = id
+  button..classes.add("buttonQuizz")
         ..src = "images/quizz/$id.png"
-        ..style.width = "120px"
         ..onClick.listen((e) => loadQuizz(id));
   
   content.children.add(button);
